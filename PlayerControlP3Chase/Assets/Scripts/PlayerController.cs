@@ -9,6 +9,9 @@ public class PlayerCon : MonoBehaviour
     private float turnSpeed = 65.0f;
     private float horizontalInput;
     private float forwardInput;
+    public Camera mainCamera;
+    public Camera hoodCamera;
+    public KeyCode FKey;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,12 @@ public class PlayerCon : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         // Rotates the car based on horizontal input
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+
+        if (Input.GetKeyDown(FKey))
+        {
+            mainCamera.enabled = !mainCamera.enabled;
+            hoodCamera.enabled = !hoodCamera.enabled;
+        }
 
     }
 }
